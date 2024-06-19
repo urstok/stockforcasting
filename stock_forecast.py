@@ -5,6 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
 import tensorflow as tf
+import sys
 
 def fetch_and_prepare_data(ticker):
     # Set random seed for NumPy and TensorFlow
@@ -102,7 +103,7 @@ def main(ticker):
     return results
 
 if __name__ == "__main__":
-    ticker = input("Enter the ticker symbol: ").strip().upper()
+    ticker = sys.argv[1]
     results = main(ticker)
 
     # Extract results
