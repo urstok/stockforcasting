@@ -100,3 +100,24 @@ def main(ticker):
     # Prepare results
     results = {"dates": business_dates, "forecast": forecast.flatten(), "high_52_week": high_52_week, "low_52_week": low_52_week}
     return results
+
+if __name__ == "__main__":
+    ticker = input("Enter the ticker symbol: ").strip().upper()
+    results = main(ticker)
+
+    # Extract results
+    business_dates = results['dates']
+    forecast = results['forecast']
+    high_52_week = results['high_52_week']
+    low_52_week = results['low_52_week']
+
+    # Print the 52-week high and low
+    print(f"52-Week High: {high_52_week}")
+    print(f"52-Week Low: {low_52_week}")
+
+    # Print the forecasted prices in a table
+    print("\nNext 30 days' predictions:")
+    print(f"{'Date':<12} {'Forecasted Price':<18}")
+    print("-" * 30)
+    for date, price in zip(business_dates, forecast):
+        print(f"{date.date():<12} {price:<18.2f}")
